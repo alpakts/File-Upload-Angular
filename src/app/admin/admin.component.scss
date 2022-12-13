@@ -1,0 +1,48 @@
+nav{
+    display: inline-flex;
+    width: 100%;
+    padding: 2rem 2rem 2rem 2rem;
+    background-color: rgb(182, 173, 173);
+}
+nav ul{
+    display: inline-flex;
+    justify-content: center;
+    background-color: rgba(122, 206, 218, 0.562);
+    border-radius: 50px;
+    
+}
+.logoli{
+    height: 100px;
+    width: 200px;
+}
+nav ul li{
+    border-width: 2px;
+    border-color: 3px;
+    list-style: none;
+    display: inline-flex;
+    padding: 1rem 1rem;
+    color: aliceblue;
+    border-radius: 15px;
+            border-left: 3px solid rgb(250, 250, 255);
+}
+nav ul li a{
+    border:none;
+    text-decoration: none;
+    color: aliceblue;
+    
+
+}
+nav div img{
+    height: 30px;
+    width: 60px;
+    display: inline-flex;
+}
+@media screen and (max-width:600px) {
+
+    nav ul li{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: rgb(239, 239, 241);
+    }
+}
