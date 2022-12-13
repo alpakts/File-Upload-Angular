@@ -61,16 +61,16 @@
       <div class="center"  >
         <ngx-file-drop style="color: black;"  dropZoneLabel="Drop files here" (onFileDrop)="dropped($event)" 
         (onFileOver)="fileOver($event)" (onFileLeave)="fileLeave($event)">
-            <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">
-              Optional custom content that replaces the the entire default content.
-              <button type="button" (click)="openFileSelector()">Browse Files</button>
+            <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector" >
+              <p style="color: black;"> Yüklemek İstediğiniz CV'yi Seçiniz(Opsiyonel)</p> 
+              <button style="margin-left: 25px;" type="button" (click)="openFileSelector()">Browse Files</button>
             </ng-template>
         </ngx-file-drop>
-        <div class="upload-table" >
+        <div class="upload-table" *ngIf="files.length>0">
             <table class="table">
                 <thead>
                     <tr>
-                        <th>Name</th>
+                        <th>Dosya</th>
                     </tr>
                 </thead>
                 <tbody class="upload-name-style">

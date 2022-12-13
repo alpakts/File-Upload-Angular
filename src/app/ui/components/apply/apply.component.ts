@@ -48,6 +48,7 @@ export class ApplyComponent implements OnInit {
     })
   }
   async submit(){
+    
     Object.assign(this.ApplyModel,this.applyForm);
     this.httpClient.post("url",this.ApplyModel)
     debugger;
