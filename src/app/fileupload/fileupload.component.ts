@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { NgxFileDropEntry } from 'ngx-file-drop';
+import { FileSystemFileEntry, NgxFileDropEntry } from 'ngx-file-drop';
 
 @Component({
   selector: 'app-fileupload',
@@ -8,9 +8,7 @@ import { NgxFileDropEntry } from 'ngx-file-drop';
   styleUrls: ['./fileupload.component.scss']
 })
 export class FileuploadComponent {
-  /**
-   *
-   */
+
   constructor(private htpp:HttpClient) {
     
   }
@@ -18,38 +16,18 @@ export class FileuploadComponent {
 
   public dropped(files: NgxFileDropEntry[]) {
     this.files = files;
-    for (const droppedFile of files) {
-
-      // Is it a file?
-      if (droppedFile.fileEntry.isFile) {
-        const fileEntry = droppedFile.fileEntry as FileSystemFileEntry;
-        fileEntry.file((file: File) => {
-
-          // Here you can access the real file
-          console.log(droppedFile.relativePath, file);
-
-          
-          const formData = new FormData()
-          formData.set(file.name, file, droppedFile.relativePath)
-          console.log(formData)
-          debugger;
-          var json=JSON.stringify(formData);
-          console.log("sadsad")
-          this.htpp.post(`https://localhost:7083/api/Forms/uploadCv?Id=84DCD8C6-7F11-410A-A9ED-E2831A1282AD`, formData, {headers:new HttpHeaders().set('responseType', 'blob')})
-          .subscribe(data => {
-            debugger
-          },er=>{
-            console.log(er)
-          })
-         
-
-        });
-      } else {
-        // It was a directory (empty directories are added, otherwise only files)
-        const fileEntry = droppedFile.fileEntry as FileSystemDirectoryEntry;
-        console.log(droppedFile.relativePath, fileEntry);
-      }
-    }
+    const fileData:FormData=new FormData();
+    for(const file of files){
+      (file.fileEntry as FileSystemFileEntry).file((_file:File)=>{
+        fileData.append(_file.name,_file,file.relativePath);
+      });
+    };
+    debugger;
+    this.htpp.post("https://localhost:7052/api/Products/Upload?Id=84DCD8C6-7F11-410A-A9ED-E2831A1282AD",fileData, {headers:new HttpHeaders().set("responseType","blob") }).subscribe(response=>{
+      debugger;
+    },error=>{
+      console.log(error)
+    })
   }
 
   public fileOver(event){

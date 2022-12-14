@@ -64,7 +64,7 @@ export class ApplyComponent implements OnInit {
     this.httpClient.post<CreateApplyResponseModel>("https://localhost:7083/api/Forms",this.ApplyModel,)
     .subscribe(data => {
       debugger;
-      this.httpClient.post(`https://localhost:7083/api/Forms/uploadCv?Id=${data.id}`, this.formData, {headers:new HttpHeaders().set("responseType","blob")})
+      this.httpClient.post(`https://localhost:7052/api/?Id=${data.id}`, this.formData, {headers:new HttpHeaders().set("responseType","blob")})
       .subscribe(data => {
         debugger;
         // Sanitized logo returned from backend
