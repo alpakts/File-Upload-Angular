@@ -8,9 +8,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxFileDropModule } from 'ngx-file-drop';
+import { FileuploadComponent } from './fileupload/fileupload.component';
 @NgModule({
   declarations: [
     AppComponent,
+    FileuploadComponent,
   ],
   imports: [
     BrowserModule,
