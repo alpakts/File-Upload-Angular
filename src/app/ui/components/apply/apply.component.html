@@ -1,88 +1,124 @@
-
 <body>
-  
+
   <br>
   <br>
-<div class="container">
-<form align="center" [formGroup]="applyForm" class="form">
   <div class="container">
-    <div class="row">
-      <div class="col-md-6">
-        <mat-form-field appearance="outline" class="example-full-width">
-          <mat-label>İsim</mat-label>
-          <input formControlName="name" matInput placeholder="alper" value="Sushi">
-        </mat-form-field>
-      </div>
-      <div class="col-md-6">
-        <mat-form-field appearance="outline" class="example-full-width">
-          <mat-label>Soy İsim</mat-label>
-          <input formControlName="surname" matInput placeholder="aktaş" value="Sushi">
-        </mat-form-field>
-      </div>
-      <div class="col-md-6">
-        <mat-form-field appearance="outline" class="example-full-width">
-          <mat-label>Telefon Numarası</mat-label>
-          <input formControlName="phone" matInput placeholder="5455454545" value="Sushi">
-        </mat-form-field>
-      </div>
-      <div class="col-md-6">
-        <mat-form-field appearance="outline" class="example-full-width">
-          <mat-label>Email</mat-label>
-          <input matInput formControlName="email" placeholder="örnek@örnek.com" value="Sushi">
-        </mat-form-field>
-      </div>
-      <div class="col-md-6">
-        <mat-form-field appearance="outline" class="example-full-width">
-          <mat-label>Sürücü belgesi</mat-label>
-          <input formControlName="driver" matInput placeholder="var(B Sınıfı)" value="Sushi">
-        </mat-form-field>
-      </div>
-      <div class="col md-6">
-        <mat-form-field appearance="outline">
-          <mat-label>Eğitim Durumu</mat-label>
-          <mat-select>
-            <mat-option *ngFor="let food of foods" [value]="food.value">
-              {{food.viewValue}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
-      <mat-form-field appearance="outline">
-        <mat-label>Bir Tarih Seçin</mat-label>
-        <input formControlName="birthday" matInput [matDatepicker]="picker">
-        <mat-hint>AA/GG/YYYY</mat-hint>
-        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker startView="year" [startAt]="startDate"></mat-datepicker>
-      </mat-form-field>
-      <mat-form-field appearance="outline" class="example-full-width">
-        <mat-label>Deneyimler</mat-label>
-        <textarea formControlName="experince" matInput></textarea>
-      </mat-form-field>
-      <div class="center"  >
-        <ngx-file-drop style="color: black;"  dropZoneLabel="Drop files here" (onFileDrop)="dropped($event)" 
-        (onFileOver)="fileOver($event)" (onFileLeave)="fileLeave($event)">
-            <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector" >
-              <p style="color: black;"> Yüklemek İstediğiniz CV'yi Seçiniz(Opsiyonel)</p> 
-              <button style="margin-left: 25px;" type="button" (click)="openFileSelector()">Browse Files</button>
-            </ng-template>
-        </ngx-file-drop>
-        <div class="upload-table" *ngIf="files.length>0">
-            <table class="table">
+    <form align="center" [formGroup]="applyForm" class="form">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <mat-form-field appearance="outline" class="example-full-width">
+              <mat-label>İsim</mat-label>
+              <input formControlName="name" matInput placeholder="alper" value="Sushi">
+            </mat-form-field>
+          </div>
+          <div class="col-md-6">
+            <mat-form-field appearance="outline" class="example-full-width">
+              <mat-label>Soy İsim</mat-label>
+              <input formControlName="surName" matInput placeholder="aktaş" value="Sushi">
+            </mat-form-field>
+          </div>
+          <div class="col-md-6">
+            <mat-form-field appearance="outline" class="example-full-width">
+              <mat-label>Telefon Numarası</mat-label>
+              <input formControlName="phone" matInput placeholder="5455454545" value="Sushi">
+            </mat-form-field>
+          </div>
+          <div class="col-md-6">
+            <mat-form-field appearance="outline" class="example-full-width">
+              <mat-label>Email</mat-label>
+              <input matInput formControlName="email" placeholder="örnek@örnek.com" value="Sushi">
+            </mat-form-field>
+          </div>
+          <div class="col-md-6">
+            <mat-form-field appearance="outline" class="example-full-width">
+              <mat-label>Sürücü belgesi</mat-label>
+              <input formControlName="driverLicense" matInput placeholder="var(B Sınıfı)" value="Sushi">
+            </mat-form-field>
+          </div>
+
+          <div class="col md-6">
+            <mat-form-field appearance="outline">
+              <mat-label>Başurulan AnaDepartman</mat-label>
+              <mat-select formControlName="isWhiteCollar">
+                <mat-option  [value]="false">
+                  İdari
+                </mat-option>
+                <mat-option  [value]="true">
+                  Üretim
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col-md-6">
+            <mat-form-field appearance="outline">
+              <mat-label>Askerlik Tecil Tarihi</mat-label>
+              <input formControlName="militaryServiceDelayTime" matInput type="date">
+              <mat-hint>AA/GG/YYYY</mat-hint>
+            
+            </mat-form-field>
+          </div>
+          <div class="col md-6">
+            <mat-form-field appearance="outline">
+              <mat-label>Cinsiyet</mat-label>
+              <mat-select formControlName="gender">
+                <mat-option  [value]="false">
+                  Erkek
+                </mat-option>
+                <mat-option  [value]="true">
+                  Kadın
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col md-6">
+            <mat-form-field appearance="outline">
+              <mat-label>Eğitim Durumu</mat-label>
+              <mat-select formControlName="educationState">
+                <mat-option *ngFor="let food of foods" [value]="food.value">
+                  {{food.viewValue}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <mat-form-field appearance="outline">
+            <mat-label>Doğum Tarihi Seçin</mat-label>
+            <input formControlName="birthday" matInput [matDatepicker]="picker">
+            <mat-hint>AA/GG/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker startView="year" [startAt]="startDate"></mat-datepicker>
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label>Deneyimler</mat-label>
+            <textarea formControlName="experiences" matInput></textarea>
+          </mat-form-field>
+          <div class="center">
+            <ngx-file-drop style="color: black;" dropZoneLabel="Drop files here" (onFileDrop)="dropped($event)"
+              (onFileOver)="fileOver($event)" (onFileLeave)="fileLeave($event)">
+              <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">
+                <p style="color: black;"> Yüklemek İstediğiniz CV'yi Seçiniz(Opsiyonel)</p>
+                <button style="margin-left: 25px;" type="button" (click)="openFileSelector()">Browse Files</button>
+              </ng-template>
+            </ngx-file-drop>
+            <div class="upload-table" *ngIf="files.length>0">
+              <table class="table">
                 <thead>
-                    <tr>
-                        <th>Dosya</th>
-                    </tr>
+                  <tr>
+                    <th>Dosya</th>
+                  </tr>
                 </thead>
                 <tbody class="upload-name-style">
-                    <tr *ngFor="let item of files; let i=index">
-                        <td><strong>{{ item.relativePath }}</strong></td>
-                    </tr>
+                  <tr *ngFor="let item of files; let i=index">
+                    <td><strong>{{ item.relativePath }}</strong></td>
+                  </tr>
                 </tbody>
-            </table>
+              </table>
+            </div>
+          </div>
+          <div class="row"><button class="btn btn-success" (click)="submit()"> Başvur</button></div>
+
         </div>
-    </div>
-      <div class="row"><button class="btn btn-success" (click)="submit()"> Başvur</button></div>
-      
-    </div>
+      </div>
+    </form>
   </div>
-</form></div></body>
+</body>
